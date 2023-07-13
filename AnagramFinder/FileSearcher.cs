@@ -4,7 +4,13 @@
     {
         public static IEnumerable<string> FindAnagrams(string filepath)
         {
-            using var reader = new ReaderCache(filepath);
+            using var reader = new ReaderCache();
+            if (!reader.OpenFile(filepath, out var error))
+            {
+                yield return error;
+                yield break;
+            }
+
             int? currentLength = null;
 
             while (true)
