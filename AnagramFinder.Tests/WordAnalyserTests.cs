@@ -2,20 +2,19 @@ using FluentAssertions;
 
 namespace AnagramFinder.Tests
 {
-    public class FileSearcherTests
+    public class WordAnalyserTests
     {
         [Test]
         public void FindAnagrams_InvalidPath_ReturnsError()
         {
-            var garbage = "this//is//garbage";
-            var result = FileSearcher.FindAnagrams(garbage);
-            result.Single().Should().Be($"Invalid file path: {garbage}");
+            var result = WordAnalyser.FindAnagrams(FileStreamerTests.InvalidPath);
+            result.Single().Should().Be($"Invalid file path: {FileStreamerTests.InvalidPath}");
         }
 
         [Test]
         public void FindAnagrams_EmptyFile_ReturnsEmpty()
         {
-            var result = FileSearcher.FindAnagrams("TestData/empty.txt");
+            var result = WordAnalyser.FindAnagrams(FileStreamerTests.EmptyFile);
             result.Should().BeEmpty();
         }
     }

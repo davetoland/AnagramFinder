@@ -1,4 +1,7 @@
 ﻿using System.Diagnostics;
+using System.Runtime.CompilerServices;
+
+[assembly: InternalsVisibleTo("AnagramFinder.Tests")]
 
 namespace AnagramFinder
 {
@@ -9,7 +12,7 @@ namespace AnagramFinder
             var timer = new Stopwatch();
             timer.Start();
 
-            foreach (var anagram in FileSearcher.FindAnagrams("example2.txt"))
+            foreach (var anagram in WordAnalyser.FindAnagrams("ExampleData/example2.txt"))
                 Console.WriteLine(anagram);
 
             timer.Stop();
